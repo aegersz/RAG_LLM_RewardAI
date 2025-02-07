@@ -1,0 +1,42 @@
+BEGIN AI_SYSTEM
+
+    INITIALIZE:
+        - Load Pretrained LLM (Generative Model)
+        - Load RAG System (Retrieval-Augmented Knowledge Base)
+        - Initialize Reward Mechanism
+
+    INPUT:
+        - User provides query Q
+        - Extract intent from Q
+
+    RETRIEVAL PHASE (RAG):
+        IF (Relevant External Knowledge Needed) THEN:
+            - Search Knowledge Base (KB) for relevant documents
+            - Rank and filter documents based on relevance score
+            - Extract top-N documents as Context_Documents
+    
+    GENERATION PHASE (LLM):
+        - Tokenize input and context
+        - Pass Q + Context_Documents to LLM
+        - Generate Response R
+
+    REWARD MECHANISM:
+        IF (User Feedback Provided) THEN:
+            - Evaluate feedback
+            - Adjust internal weighting of retrieved context
+            - Adjust LLM response tuning (Reinforcement Learning)
+        
+        IF (Self-Evaluation Enabled) THEN:
+            - Cross-check response coherence, factual accuracy
+            - Penalize hallucination (reward grounded outputs)
+    
+    RESPONSE OPTIMIZATION:
+        - Re-rank response candidates if needed
+        - Select best response R* for final output
+
+    OUTPUT:
+        - Return R* to User
+
+    LOOP UNTIL USER TERMINATES
+
+END AI_SYSTEM
